@@ -1,181 +1,180 @@
-Tentu, berikut adalah kode yang telah disesuaikan untuk proyek akhir Anda tentang pengolahan data mahasiswa:
+# Proyek Akhir Pemrograman Berbasis Objek 1
 
-```java
-package pbo;
+Proyek ini adalah contoh sederhana aplikasi pengolahan data elektronik menggunakan Java sebagai tugas akhir dari mata kuliah pemrograman berbasis objek 1.
 
-// Kelas Mahasiswa
-public class Mahasiswa {
-    // Atribut enkapsulasi
-    private String nama;
-    private String npm;
+## Deskripsi
 
-    // Konstruktor
-    public Mahasiswa(String nama, String npm) {
-        this.nama = nama;
-        this.npm = npm;
+Aplikasi ini menerima input berupa nama elektronik dan kode elektronik, dan memberikan output berupa informasi detail dari nama barang, kode barang, kategori barang, merek barang dan No registrasi.
+
+Aplikasi ini mengimplementasikan beberapa konsep penting dalam pemrograman berorientasi objek (OOP) seperti Class, Object, Atribut, Method Constructor, Method Mutator, Method Accessor, Encapsulation, Inheritance, Overloading, Overriding, Seleksi, Perulangan, IO Sederhana, Array, dan Error Handling.
+
+## Penjelasan Kode
+
+Berikut adalah bagian kode yang relevan dengan konsep OOP yang dijelaskan:
+
+1. **Class** adalah template atau blueprint dari object. Pada kode ini, `Elektronik`, `ElektronikDetail`, dan `ElektronikBeraksi` adalah contoh dari class.
+
+```bash
+public class Elektronik {
+    ...
+}
+
+public class ElektronikDetail extends Elektronik {
+    ...
+}
+
+public class ElektronikBeraksi {
+    ...
+}
+```
+
+2. **Object** adalah instance dari class. Pada kode ini, `elektronikList[i] = new ElektronikDetail(nama, kode);` adalah contoh pembuatan object.
+
+```bash
+elektronikList[i] = new ElektronikDetail(nama, kode);
+```
+
+3. **Atribut** adalah variabel yang ada dalam class. Pada kode ini, `nama` dan `kode` adalah contoh atribut.
+
+```bash
+private String nama;
+private int kode;
+```
+
+4. **Constructor** adalah method yang pertama kali dijalankan pada saat pembuatan object. Pada kode ini, constructor ada di dalam class `Elektronik` dan `ElektronikDetail`.
+
+```bash
+public Elektronik(String nama, int kode) {
+    this.nama = nama;
+    this.kode = kode;
+}
+
+public ElektronikDetail(String nama, int kode) {
+    super(nama, kode);
+}
+```
+
+5. **Mutator** atau setter digunakan untuk mengubah nilai dari suatu atribut. Pada kode ini, `setNama` dan `setKode` adalah contoh method mutator.
+
+```bash
+public void setNama(String nama) {
+    this.nama = nama;
+}
+
+public void setKode(int kode) {
+    this.kode = kode;
+}
+```
+
+6. **Accessor** atau getter digunakan untuk mengambil nilai dari suatu atribut. Pada kode ini, `getNama` dan `getKode` adalah contoh method accessor.
+
+```bash
+public String getNama() {
+    return nama;
+}
+
+public int getKode() {
+    return kode;
+}
+```
+
+7. **Encapsulation** adalah konsep menyembunyikan data dengan membuat atribut menjadi private dan hanya bisa diakses melalui method. Pada kode ini, atribut `nama` dan `kode` dienkapsulasi dan hanya bisa diakses melalui method getter dan setter.
+
+```bash
+private String nama;
+private int kode;
+```
+
+8. **Inheritance** adalah konsep di mana sebuah class bisa mewarisi property dan method dari class lain. Pada kode ini, `ElektronikDetail` mewarisi `Elektronik` dengan sintaks `extends`.
+
+```bash
+public class ElektronikDetail extends Elektronik {
+    ...
+}
+```
+
+9. **Polymorphism** adalah konsep di mana sebuah nama dapat digunakan untuk merujuk ke beberapa tipe atau bentuk objek berbeda. Ini memungkinkan metode-metode dengan nama yang sama untuk berperilaku berbeda tergantung pada tipe objek yang mereka manipulasi, polymorphism bisa berbentuk Overloading ataupun Overriding. Pada kode ini, method `displayInfo(String)` di `Elektronik` merupakan overloading method `displayInfo` dan `displayInfo` di `ElektronikDetail` merupakan override dari method `displayInfo` di `Elektronik`.
+
+```bash
+public String displayInfo(String warna) {
+    return displayInfo() + "\nWarna: " + warna;
+}
+
+@Override
+public String displayInfo() {
+    ...
+}
+```
+
+10. **Seleksi** adalah statement kontrol yang digunakan untuk membuat keputusan berdasarkan kondisi. Pada kode ini, digunakan seleksi `if else` dalam method `getKategori` dan seleksi `switch` dalam method `getMerek`.
+
+```bash
+public String getKategori() {
+    int kodeKategori = getKode() / 1000;  // Mengambil digit pertama
+    // Seleksi if
+    if (kodeKategori == 1) {
+        return "Televisi";
+    } else if (kodeKategori == 2) {
+        return "Kulkas";
+    } else if (kodeKategori == 3) {
+        return "Mesin Cuci";
+    } else {
+        return "Kategori Lain";
     }
+}
 
-    // Mutator (setter)
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
-    public void setNpm(String npm) {
-        this.npm = npm;
-    }
-
-    // Accessor (getter)
-    public String getNama() {
-        return nama;
-    }
-
-    public String getNpm() {
-        return npm;
-    }
-
-    // Metode untuk menampilkan informasi dasar mahasiswa
-    public String displayInfo() {
-        return "Nama: " + getNama() + "\nNPM: " + getNpm();
-    }
-
-    // Polymorphism overloading
-    public String displayInfo(String kelas) {
-        return displayInfo() + "\nKelas: " + kelas;
+public String getMerek() {
+    int kodeMerek = (getKode() / 100) % 10;  // Mengambil digit kedua
+    // Seleksi switch
+    switch (kodeMerek) {
+        case 1:
+            return "Samsung";
+        case 2:
+            return "LG";
+        case 3:
+            return "Sony";
+        default:
+            return "Merek Lain";
     }
 }
 ```
 
-```java
-package pbo;
+11. **Perulangan** adalah statement kontrol yang digunakan untuk menjalankan blok kode berulang kali. Pada kode ini, digunakan loop `for` untuk meminta input dan menampilkan data.
 
-// Kelas MahasiswaDetail yang mewarisi kelas Mahasiswa
-public class MahasiswaDetail extends Mahasiswa {
-    // Konstruktor
-    public MahasiswaDetail(String nama, String npm) {
-        super(nama, npm);
-    }
-
-    // Metode untuk mendapatkan tahun masuk dari NPM
-    public int getTahunMasuk() {
-        return Integer.parseInt(getNpm().substring(0, 2)) + 2000;
-    }
-
-    // Metode untuk mendapatkan fakultas dari NPM
-    public String getFakultas() {
-        String kodeFak = getNpm().substring(2, 4);
-        if (kodeFak.equals("10")) {
-            return "Fakultas Teknologi Informasi";
-        } else {
-            return "Fakultas Lain";
-        }
-    }
-
-    // Metode untuk mendapatkan program studi dari NPM
-    public String getProdi() {
-        String kodeProdi = getNpm().substring(4, 6);
-        switch (kodeProdi) {
-            case "01":
-                return "Teknik Informatika";
-            case "02":
-                return "Sistem Informasi";
-            default:
-                return "Prodi Lain";
-        }
-    }
-
-    // Metode untuk mendapatkan nomor registrasi dari NPM
-    public int getNoRegistrasi() {
-        return Integer.parseInt(getNpm().substring(6));
-    }
-
-    // Polymorphism overriding
-    @Override
-    public String displayInfo() {
-        return super.displayInfo() +
-               "\nTahun Masuk: " + getTahunMasuk() +
-               "\nFakultas: " + getFakultas() +
-               "\nProgram Studi: " + getProdi() +
-               "\nNo Registrasi: " + getNoRegistrasi();
-    }
+```bash
+for (int i = 0; i < elektronikList.length; i++) {
+    ...
 }
 ```
 
-```java
-package pbo;
+12. **Input Output Sederhana** digunakan untuk menerima input dari user dan menampilkan output ke user. Pada kode ini, digunakan class `Scanner` untuk menerima input dan method `System.out.println` untuk menampilkan output.
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+```bash
+Scanner scanner = new Scanner(System.in);
+System.out.print("Masukkan nama produk elektronik " + (i + 1) + ": ");
+String nama = scanner.nextLine();
 
-// Kelas MahasiswaBeraksi untuk menjalankan aplikasi
-public class MahasiswaBeraksi {
-    public static void main(String[] args) {
-        // IO sederhana dengan penanganan error
-        try {
-            Scanner scanner = new Scanner(System.in);
+System.out.println("\nData produk elektronik:");
+System.out.println(data.displayInfo());
+```
 
-            // Array untuk menyimpan data mahasiswa
-            MahasiswaDetail[] mahasiswas = new MahasiswaDetail[2];
+13. **Array** adalah struktur data yang digunakan untuk menyimpan beberapa nilai dalam satu variabel. Pada kode ini, `ElektronikDetail[] elektronikList = new ElektronikDetail[2];` adalah contoh penggunaan array.
 
-            for (int i = 0; i < mahasiswas.length; i++) {
-                System.out.print("Masukkan nama mahasiswa ke-" + (i + 1) + ": ");
-                String nama = scanner.nextLine();
-                System.out.print("Masukkan NPM mahasiswa ke-" + (i + 1) + " (5 digit): ");
-                
-                int kode = scanner.nextInt();
-                scanner.nextLine();  // Konsumsi newline
+```bash
+ElektronikDetail[] elektronikList = new ElektronikDetail[2];
+```
 
-                // Validasi input kode
-                if (String.valueOf(kode).length() != 5) {
-                    throw new StringIndexOutOfBoundsException("Kode produk harus terdiri dari 5 angka.");
-                }
+14. **Error Handling** digunakan untuk menangani error yang mungkin terjadi saat runtime. Pada kode ini, digunakan `try catch` untuk menangani error.
 
-                // Objek
-                mahasiswas[i] = new MahasiswaDetail(nama, String.valueOf(kode));
-            }
-
-            for (MahasiswaDetail data : mahasiswas) {
-                System.out.println("============");
-                System.out.println("Data mahasiswa: ");
-                System.out.println(data.displayInfo());
-            }
-        } catch (InputMismatchException e) {
-            System.out.println("Kesalahan format input: Kode harus berupa angka.");
-        } catch (StringIndexOutOfBoundsException e) {
-            System.out.println("Kesalahan format kode: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Kesalahan umum: " + e.getMessage());
-        }
-    }
+```bash
+try {
+    // code that might throw an exception
+} catch (Exception e) {
+    System.out.println("Error: " + e.getMessage());
 }
 ```
 
-### Penjelasan Kode
-
-**Kelas Mahasiswa**:
-- Atribut `nama` dan `npm` digunakan untuk menyimpan data mahasiswa.
-- Konstruktor untuk inisialisasi objek dengan `nama` dan `npm`.
-- Metode setter dan getter untuk atribut `nama` dan `npm`.
-- Metode `displayInfo` untuk menampilkan informasi dasar mahasiswa.
-- Overloading metode `displayInfo` untuk menambahkan informasi kelas.
-
-**Kelas MahasiswaDetail**:
-- Mewarisi kelas Mahasiswa.
-- Konstruktor untuk inisialisasi objek dengan `nama` dan `npm`.
-- Metode `getTahunMasuk` untuk mendapatkan tahun masuk dari NPM.
-- Metode `getFakultas` untuk mendapatkan fakultas dari NPM.
-- Metode `getProdi` untuk mendapatkan program studi dari NPM.
-- Metode `getNoRegistrasi` untuk mendapatkan nomor registrasi dari NPM.
-- Overriding metode `displayInfo` untuk menambahkan informasi detail.
-
-**Kelas MahasiswaBeraksi**:
-- Menggunakan `Scanner` untuk menerima input dari pengguna.
-- Array `mahasiswas` untuk menyimpan data mahasiswa.
-- Loop untuk meminta input nama dan NPM mahasiswa.
-- Validasi input NPM agar terdiri dari 5 digit angka.
-- Menampilkan informasi mahasiswa dengan memanggil metode `displayInfo`.
-- Penanganan error dengan `try-catch` untuk mengelola kesalahan input.
-
-### Usulan Nilai
+## Usulan nilai
 
 | No  | Materi         |  Nilai  |
 | :-: | -------------- | :-----: |
@@ -195,7 +194,8 @@ public class MahasiswaBeraksi {
 | 14  | Error Handling |   15    |
 |     | **TOTAL**      | **100** |
 
-### Pembuat
+## Pembuat
 
 Nama: Achmad Ridani
 NPM: 2210010273
+
